@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #000;
+  font-family: 'Reforma2018-Gris', sans-serif;
+}
+
+/* Font declarations */
+@font-face {
+  font-family: 'BillyOhio';
+  src: url('/fonts/billyohio-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reforma2018-Blanca';
+  src: url('/fonts/Reforma2018-Blanca.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reforma2018-Gris';
+  src: url('/fonts/Reforma2018-Gris.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reforma2018-Negra';
+  src: url('/fonts/Reforma2018-Negra.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Reforma';
+  src: url('/fonts/Reforma.woff2') format('woff2'),
+       url('/fonts/Reforma.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom styles */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.font-reforma {
+  font-family: 'Reforma2018-Gris';
+}
+
+.font-reforma-bold {
+  font-family: 'Reforma2018-Negra';
+}
+
+.font-reforma-light {
+  font-family: 'Reforma2018-Blanca';
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+[data-animate].animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure content visibility */
+#root {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Fix z-index stacking */
+.hero-section {
+  z-index: 0;
+}
+
+.nav-wrapper {
+  z-index: 50;
+}
