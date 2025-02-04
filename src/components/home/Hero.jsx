@@ -128,7 +128,7 @@ const Hero = () => {
               exitPoint={0.4}
             >
               <p className="text-2xl tracking-wide text-white font-reforma-bold">
-                The Most Instagrammable Rooftop Restaurant in Nagpur
+              An experience that awakens all the senses
               </p>
             </ScrollFadeOut>
           </motion.div>
