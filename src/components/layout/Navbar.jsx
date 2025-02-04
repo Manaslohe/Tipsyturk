@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, Menu } from 'lucide-react';
 import { usePopup } from '../../contexts/PopupContext';
 import { useLoading } from '../../contexts/LoadingContext';
 
@@ -76,6 +76,106 @@ const AnnouncementBar = ({ isVisible, onVisibilityChange }) => {
   );
 };
 
+const scrollToSection = (sectionId, callback) => {
+  const element = document.querySelector(sectionId);
+  if (element) {
+    const offset = 100; // Adjust this value based on your navbar height
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+
+    // Add highlight animation to the section
+    element.style.transition = 'outline 0.3s ease';
+    element.style.outline = '2px solid rgba(245, 158, 11, 0.5)'; // amber-500 with opacity
+    
+    setTimeout(() => {
+      element.style.outline = 'none';
+      if (callback) callback();
+    }, 1000);
+  }
+};
+
+const MobileMenu = ({ isOpen, onClose, navItems, isPastHero }) => {
+  const handleNavClick = (href) => {
+    onClose();
+    setTimeout(() => {
+      scrollToSection(href);
+    }, 300); // Wait for menu close animation
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/40 z-30 lg:hidden"
+          />
+          
+          {/* Menu Panel */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className="fixed right-0 top-0 bottom-0 w-[300px] bg-white z-40 lg:hidden"
+          >
+            <div className="flex flex-col h-full">
+              {/* Updated Header */}
+              <div className="flex justify-between items-center p-6 border-b">
+                <button 
+                  onClick={onClose} 
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X size={24} className="text-gray-600" />
+                </button>
+                <img src="/logo.jpg" alt="Logo" className="h-12 w-auto" />
+              </div>
+              
+              {/* Navigation Items */}
+              <div className="flex-1 overflow-y-auto py-8">
+                <div className="flex flex-col space-y-6 px-6">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.label}
+                      onClick={() => handleNavClick(item.href)}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`
+                        text-xl font-bold text-left
+                        ${item.highlight ? 'text-amber-500' : 'text-gray-900'}
+                        hover:translate-x-2 transition-transform duration-200
+                      `}
+                    >
+                      {item.label}
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Footer */}
+              <div className="p-6 border-t">
+                <p className="text-sm text-gray-600">
+                  Open daily from 11:00 AM - 1:00 AM
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const Navigation = () => {
   const [scrollState, setScrollState] = useState({
     isScrolled: false,
@@ -85,6 +185,7 @@ const Navigation = () => {
   const lastScrollY = useRef(0);
   const hasClosedAnnouncement = useRef(false);
   const { isLoading } = useLoading();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -176,15 +277,24 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2">
-              <div className="w-6 h-0.5 bg-current mb-1.5" />
-              <div className="w-6 h-0.5 bg-current mb-1.5" />
-              <div className="w-6 h-0.5 bg-current" />
+            {/* Updated Mobile Menu Button */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(true)} 
+              className="lg:hidden p-4 -mr-2"
+            >
+              <Menu size={24} className="text-current" />
             </button>
           </div>
         </div>
       </motion.nav>
+
+      {/* Mobile Menu */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        navItems={navItems}
+        isPastHero={scrollState.isScrolled}
+      />
     </>
   );
 };
