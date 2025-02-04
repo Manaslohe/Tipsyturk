@@ -130,9 +130,6 @@ const Hero = () => {
               <p className="text-2xl tracking-wide text-white font-reforma-bold">
                 The Most Instagrammable Rooftop Restaurant in Nagpur
               </p>
-              <div className="mt-4 text-lg text-white/80">
-                Located in Sadar | Turkish & Mediterranean Cuisine | Open Daily until 1 AM
-              </div>
             </ScrollFadeOut>
           </motion.div>
         </div>
