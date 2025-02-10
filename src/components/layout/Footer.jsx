@@ -84,7 +84,7 @@ export default function Footer() {
               className="text-6xl text-amber-500" 
               style={{ fontFamily: 'BillyOhio' }}
             >
-              TypsyTurk
+              TipsyTurk
             </motion.h4>
             
             <motion.p 

@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useAbout } from '../../contexts/AboutContext';
 
 const Story = () => {
+  const { openAbout } = useAbout();
   const storyRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: storyRef,
@@ -47,10 +49,14 @@ const Story = () => {
           </p>
           <div className="inline-block relative">
             <a 
+              onClick={(e) => {
+                e.preventDefault();
+                openAbout();
+              }}
               href="#about"
               className="inline-block text-amber-500 border-b-2 border-amber-500 pb-1 
                        hover:text-amber-600 hover:border-amber-600 transition-colors 
-                       text-xl sm:text-2xl font-bold"
+                       text-xl sm:text-2xl font-bold cursor-pointer"
             >
               Learn About Us
             </a>
