@@ -14,10 +14,10 @@ const maxPhotos = {
 
 const fileExtensions = {
   Ambiance: 'JPG',
-  Crowd: 'JPG',  // Changed from 'jpg' to 'JPG'
+  Crowd: 'jpg',  // Changed from 'jpg' to 'JPG'
   Desert: 'JPG',
-  Drinks: 'jpg',
-  Food: 'jpg'
+  Drinks: 'JPG',
+  Food: 'JPG'
 };
 
 const Gallery = () => {

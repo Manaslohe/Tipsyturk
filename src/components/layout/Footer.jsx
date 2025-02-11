@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { link } from 'framer-motion/client';
 
 export default function Footer() {
   const fadeInUp = {
@@ -27,13 +28,12 @@ export default function Footer() {
             </span>
             <div className="flex items-center gap-8">
               {[
-                { icon: Facebook, label: "Facebook" },
-                { icon: Instagram, label: "Instagram" },
-                { icon: Twitter, label: "Twitter" }
+                { icon: Facebook, label: "Facebook", link: "https://www.facebook.com/p/tipsyturk-100090627679707/" },
+                { icon: Instagram, label: "Instagram", link: "https://www.instagram.com/tipsy.turk/" },
               ].map((item, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={item.link}
                   className="group relative flex items-center justify-center w-12 h-12 
                            rounded-full bg-white/10 hover:bg-white/20 
                            transition-all duration-300 transform hover:scale-110"
