@@ -54,7 +54,7 @@ const PageTransition = () => {
         <img
           src="/logo.jpg"
           alt="Logo"
-          className="w-24 h-24 object-contain rounded-full"
+          className="w-64 h-64 object-contain rounded-full" // Changed from w-24 h-24 to w-64 h-64
         />
       </motion.div>
     </motion.div>

@@ -21,7 +21,7 @@ const Menu = () => {
       alt: "Fresh salad with lime garnish"
     },
     {
-      url: "/gallery/Food/13.JPG",
+      url: "/gallery/Food/13.jpg",
       alt: "Lemons and condiments on a serving tray"
     },
     {
