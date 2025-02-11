@@ -73,8 +73,8 @@ const Story = () => {
                      max-w-3xl lg:max-w-4xl mx-auto w-full"
         >
           {[
-            { src: "/toffee-1.jpeg", alt: "Delicious toffee dessert" },
-            { src: "/apple-cider-1.jpeg", alt: "Refreshing apple cider" }
+            { src: "/gallery/Drinks/1.jpg", alt: "Delicious toffee dessert" },
+            { src: "/gallery/Desert/2.JPG", alt: "Refreshing apple cider" }
           ].map((img, index) => (
             <div 
               key={index}

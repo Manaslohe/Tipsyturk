@@ -17,19 +17,19 @@ const Menu = () => {
 
   const images = [
     {
-      url: "/menu-thumb-1.jpg",
+      url: "/gallery/Food/6.jpg",
       alt: "Fresh salad with lime garnish"
     },
     {
-      url: "/menu-thumb-2.jpg",
+      url: "/gallery/Food/13.JPG",
       alt: "Lemons and condiments on a serving tray"
     },
     {
-      url: "/menu-thumb-4.jpg",
+      url: "/gallery/Food/5.jpg",
       alt: "Pasta dish with red sauce"
     },
     {
-      url: "/menu-thumb-6.jpg",
+      url: "/gallery/Food/10.jpg",
       alt: "Plated dish with purple cabbage"
     }
   ];

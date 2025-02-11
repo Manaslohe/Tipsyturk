@@ -72,12 +72,16 @@ export default function Footer() {
         >
           <div className="flex flex-col items-center gap-6">
             {/* Logo */}
-            <motion.img 
+            <motion.div
               variants={fadeInUp}
-              src="/logo.jpg" 
-              alt="TypsyTurk Logo" 
-              className="w-32 h-32 object-contain rounded-full"
-            />
+            >
+              <img 
+                src="/logo.jpg" 
+                alt="TypsyTurk Logo" 
+                className="w-40 h-40 md:w-48 md:h-48 object-contain
+                         transform hover:scale-105 transition-all duration-500"
+              />
+            </motion.div>
             
             <motion.h4 
               variants={fadeInUp}

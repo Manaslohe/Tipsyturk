@@ -298,19 +298,26 @@ const Navigation = () => {
             {/* Logo */}
             <button
               onClick={scrollToTop}
-              className="absolute left-1/2 -translate-x-1/2 hover:opacity-90 transition-opacity"
+              className={`
+                absolute left-1/2 -translate-x-1/2 hover:opacity-90 transition-all duration-500
+                ${scrollState.isScrolled ? 'translate-y-0' : 'translate-y-8'}
+              `}
             >
               <img
-                src="/logo.jpg"
+                src={scrollState.isScrolled ? "/blacklogo.png" : "/logo.jpg"}
                 alt="Rosa Logo"
                 className={`
-                  h-[60px] w-auto transition-all duration-300
-                  ${scrollState.isScrolled ? 'scale-90' : 'scale-100'}
+                  transition-all duration-300
                   object-contain
-                  lg:h-[70px]
+                  ${scrollState.isScrolled 
+                    ? 'h-[90px] scale-100 sm:h-[100px] lg:h-[110px]' 
+                    : 'h-[150px] scale-110 sm:h-[120px] lg:h-[150px]'
+                  }
                 `}
                 style={{
-                  filter: scrollState.isScrolled ? 'none' : 'brightness(1.2)'
+                  filter: scrollState.isScrolled 
+                    ? 'none'
+                    : 'brightness(1.2)'
                 }}
               />
             </button>

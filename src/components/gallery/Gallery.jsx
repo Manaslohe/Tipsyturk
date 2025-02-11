@@ -112,7 +112,8 @@ const Gallery = () => {
   }, [selectedCategory]);
 
   const getImagePath = (category, number) => {
-    return `/src/components/gallary/${category}/${number}.${fileExtensions[category]}`;
+    // Update path to use /gallery instead of /src/components/gallary
+    return `/gallery/${category}/${number}.${fileExtensions[category]}`;
   };
 
   const getImages = (category) => {
