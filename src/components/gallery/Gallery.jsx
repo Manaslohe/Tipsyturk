@@ -155,6 +155,32 @@ const Gallery = () => {
     });
   }, []); // Only run once on mount
 
+  // Add this function near other utility functions
+  const getImageLoadingPriority = (index) => {
+    // First 6 images load with high priority
+    return index <= 6 ? 'eager' : 'lazy';
+  };
+
+  // Update useEffect for preloading
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagesToPreload = getImages(selectedCategory).slice(0, 4); // Reduced from 6 to 4
+      
+      for (const index of imagesToPreload) {
+        const img = new Image();
+        img.src = getImagePath(selectedCategory, index);
+        img.loading = 'eager';
+        img.decoding = 'async';
+        await new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+      }
+    };
+
+    preloadImages();
+  }, [selectedCategory]);
+
   return (
     <div className="relative w-full min-h-screen overflow-y-auto bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460]">
       <motion.div
@@ -250,10 +276,17 @@ const Gallery = () => {
                         <>
                           <img
                             src={getImagePath(selectedCategory, index)}
-                            alt={`Gallery Image`}
+                            alt={`${selectedCategory} Gallery Image ${index}`}
+                            loading={getImageLoadingPriority(index)}
+                            decoding="async"
+                            fetchpriority={index <= 4 ? "high" : "auto"} // Changed from fetchPriority to fetchpriority
                             onLoad={() => handleImageLoad(selectedCategory, index)}
                             onError={() => handleImageError(selectedCategory, index)}
                             className="object-cover w-full h-full transform transition-all duration-500 ease-out group-hover:scale-110"
+                            style={{
+                              contentVisibility: 'auto',
+                              containIntrinsicSize: '400px'
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
                             <motion.div
