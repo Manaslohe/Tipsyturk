@@ -14,7 +14,7 @@ const maxPhotos = {
 
 const fileExtensions = {
   Ambiance: 'JPG',
-  Crowd: 'jpg',
+  Crowd: 'JPG',
   Desert: 'JPG',
   Drinks: 'jpg',
   Food: 'jpg'
