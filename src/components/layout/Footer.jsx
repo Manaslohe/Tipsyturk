@@ -76,7 +76,7 @@ export default function Footer() {
               variants={fadeInUp}
             >
               <img 
-                src="./public/logo.jpg" 
+                src="/logo.jpg" 
                 alt="TypsyTurk Logo" 
                 className="w-40 h-40 md:w-48 md:h-48 object-contain
                          transform hover:scale-105 transition-all duration-500"
