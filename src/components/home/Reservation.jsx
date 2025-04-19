@@ -71,8 +71,8 @@ const Reservation = () => {
                        max-w-3xl lg:max-w-4xl mx-auto w-full"
           >
             {[
-              { src: "/gallery/Food/18.jpg", alt: "Delicious toffee dessert" },
-              { src: "/gallery/Drinks/5.jpg", alt: "Refreshing apple cider" }
+              { src: "/gallery/Food/18.JPG", alt: "Delicious toffee dessert" },
+              { src: "/gallery/Drinks/5.JPG", alt: "Refreshing apple cider" }
             ].map((img, index) => (
               <div 
                 key={index}
