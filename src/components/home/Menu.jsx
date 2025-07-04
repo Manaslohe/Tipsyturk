@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import MenuPopup from '../reservation/MenuPopup';
 import { usePopup } from '../../contexts/PopupContext';
@@ -14,6 +14,7 @@ const Menu = () => {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
   const { isPopupOpen, setIsPopupOpen } = usePopup();
+  const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
 
   const images = [
     {
@@ -113,24 +114,26 @@ const Menu = () => {
             </p>
 
             <div className="inline-block relative">
-              <motion.button 
-                onClick={() => setIsPopupOpen(true)}
-                className="group relative inline-flex items-center gap-2 px-8 py-3"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                {/* Border container with animation */}
-                <div className="absolute inset-0 rounded-full border-2 border-amber-500 transition-all duration-300 group-hover:border-amber-600" />
-                
-                {/* Content */}
-                <span 
-                  style={{ fontFamily: 'Reforma2018-Blanca' }} 
-                  className="relative text-xl font-bold text-amber-500 group-hover:text-amber-600 transition-colors duration-200"
+              <div className="flex gap-4">
+                <motion.button 
+                  onClick={() => setIsPopupOpen(true)}
+                  className="group relative inline-flex items-center gap-2 px-8 py-3"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  View the Food Menu
-                </span>
-              </motion.button>
+                  {/* Border container with animation */}
+                  <div className="absolute inset-0 rounded-full border-2 border-amber-500 transition-all duration-300 group-hover:border-amber-600" />
+                  
+                  {/* Content */}
+                  <span 
+                    style={{ fontFamily: 'Reforma2018-Blanca' }} 
+                    className="relative text-lg md:text-xl font-bold text-amber-500 group-hover:text-amber-600 transition-colors duration-200"
+                  >
+                    View the Food Menu
+                  </span>
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         </motion.div>

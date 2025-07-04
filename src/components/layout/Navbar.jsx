@@ -249,6 +249,7 @@ const Navigation = () => {
   const navbarClasses = `
     fixed w-full transition-all duration-300
     ${isAnnounceVisible ? 'top-[60px]' : 'top-0'}
+    z-[10000]
     ${scrollState.isScrolled 
       ? 'bg-white/90 backdrop-blur-md shadow-lg text-gray-900' 
       : 'bg-transparent text-white'}
@@ -418,9 +419,9 @@ const NavLink = ({ label, href, isPastHero, highlight, index }) => {
   );
 };
 
-const Header = () => {
+const Header = ({ isDownloadMenuOpen }) => {
   const { isPopupOpen } = usePopup();
-  if (isPopupOpen) return null;
+  if (isPopupOpen || isDownloadMenuOpen) return null;
 
   return (
     <div className="nav-wrapper fixed w-full">
