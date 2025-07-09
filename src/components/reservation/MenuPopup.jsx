@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import DownloadMenuPopup from './DownloadMenuPopup';
+// DownloadMenuPopup import removed; now using DownloadMenuPage as a standalone page.
 import { categories, menuItems } from './MenuData';
 import { useNavigate } from 'react-router-dom';
 
@@ -147,7 +147,15 @@ const MenuPopup = () => {
         <div className="max-w-screen-2xl mx-auto flex items-center justify-between gap-2">
           {/* Left: Back button */}
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => {
+              if (activeCategory) {
+                setActiveCategory(null);
+                setVegFilter("All");
+                setSortBy("Default");
+              } else {
+                navigate("/menu");
+              }
+            }}
             className="flex items-center gap-1 px-2 py-2 rounded-full border border-amber-200 bg-white text-amber-500 hover:bg-amber-50 font-semibold shadow-sm transition text-xs sm:text-sm"
             aria-label="Back"
           >
@@ -168,7 +176,7 @@ const MenuPopup = () => {
           </div>
           {/* Right: Download */}
           <button
-            onClick={() => setIsDownloadPopupOpen(true)}
+            onClick={() => navigate('/download-menu')}
             className="group flex items-center gap-1 px-2 py-2 rounded-full border-2 border-amber-500 text-amber-500 font-bold hover:border-amber-600 hover:text-amber-600 transition-colors duration-200 text-xs sm:text-sm whitespace-nowrap"
             style={{ fontFamily: 'Reforma2018-Blanca' }}
           >
@@ -295,10 +303,7 @@ const MenuPopup = () => {
         )}
       </div>
 
-      <DownloadMenuPopup
-        isOpen={isDownloadPopupOpen}
-        onClose={() => setIsDownloadPopupOpen(false)}
-      />
+      {/* DownloadMenuPopup removed. Download menu is now a standalone page at /download-menu. */}
     </div>
   );
 };

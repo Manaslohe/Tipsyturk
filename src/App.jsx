@@ -19,6 +19,7 @@ import AboutPopup from './components/home/AboutUs';
 import { useAbout } from './contexts/AboutContext';
 import { TransitionProvider } from './contexts/TransitionContext';
 import MenuPopup from './components/reservation/MenuPopup';
+import DownloadMenuPage from './components/reservation/DownloadMenuPage';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const AppRoutes = () => {
     <Routes location={location} key={location.pathname}>
       <Route path="/gallery" element={<Gallery />} />
       <Route path="/menu" element={<MenuPopup />} />
+      <Route path="/download-menu" element={<DownloadMenuPage />} />
       <Route path="/" element={
         <main className="relative">
           <Navbar />
