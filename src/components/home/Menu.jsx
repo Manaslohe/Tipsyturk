@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import MenuPopup from '../reservation/MenuPopup';
-import { usePopup } from '../../contexts/PopupContext';
+// Remove MenuPopup import
+// import MenuPopup from '../reservation/MenuPopup';
+import { useNavigate } from 'react-router-dom'; // Add this import
 
 const Menu = () => {
   const sectionRef = useRef(null);
@@ -13,8 +14,11 @@ const Menu = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
-  const { isPopupOpen, setIsPopupOpen } = usePopup();
-  const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
+  // Remove popup state
+  // const { isPopupOpen, setIsPopupOpen } = usePopup();
+  // const [isDownloadPopupOpen, setIsDownloadPopupOpen] = useState(false);
+
+  const navigate = useNavigate(); // Add this
 
   const images = [
     {
@@ -116,7 +120,7 @@ const Menu = () => {
             <div className="inline-block relative">
               <div className="flex gap-4">
                 <motion.button 
-                  onClick={() => setIsPopupOpen(true)}
+                  onClick={() => navigate('/menu')}
                   className="group relative inline-flex items-center gap-2 px-8 py-3"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -139,10 +143,7 @@ const Menu = () => {
         </motion.div>
       </motion.section>
 
-      <MenuPopup 
-        isOpen={isPopupOpen} 
-        onClose={() => setIsPopupOpen(false)} 
-      />
+      {/* Remove MenuPopup popup usage */}
     </>
   );
 };

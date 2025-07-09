@@ -18,6 +18,7 @@ import { AboutProvider } from './contexts/AboutContext';
 import AboutPopup from './components/home/AboutUs';
 import { useAbout } from './contexts/AboutContext';
 import { TransitionProvider } from './contexts/TransitionContext';
+import MenuPopup from './components/reservation/MenuPopup';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const AppRoutes = () => {
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/gallery" element={<Gallery />} />
+      <Route path="/menu" element={<MenuPopup />} />
       <Route path="/" element={
         <main className="relative">
           <Navbar />
