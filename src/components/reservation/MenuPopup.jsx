@@ -119,7 +119,7 @@ const MenuPopup = () => {
       <button
         ref={ref}
         onClick={onClick}
-        className="group flex flex-col items-center justify-center p-3 sm:p-6 rounded-2xl border border-amber-100 bg-white hover:bg-amber-50 hover:border-amber-400 shadow-sm hover:shadow-md transition text-center relative focus:outline-none focus:ring-2 focus:ring-amber-300 overflow-hidden"
+        className="group flex flex-col items-center justify-center p-3 sm:p-6 rounded-2xl border border-amber-100 bg-white hover:bg-amber-50 hover:border-amber-400 shadow-sm hover:shadow-md transition text-center relative focus:outline-none focus:ring-2 focus:ring-amber-300 overflow-hidden transform hover:scale-105 transition-transform duration-200"
         style={{
           minHeight: '140px',
           backgroundImage: isVisible && imageUrl ? `url(${imageUrl.replace(/ /g, '%20')})` : undefined,
